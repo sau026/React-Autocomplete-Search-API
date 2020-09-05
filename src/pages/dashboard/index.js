@@ -9,14 +9,6 @@ import './index.scss';
 const Dashboard = (props) => {
   const userDetails = useSelector(state => state.todoDataReducer)
 
-  const closeDataModal = () => {
-    try {
-      this.props.selectPassenger(null);
-    } catch (error) {
-      console.log('error:::::', error)
-    }
-  };
-
   const getAppHeaderJSX = () => {
     return (
       <>
@@ -43,7 +35,7 @@ const Dashboard = (props) => {
 
   return (
     <div className="dashboard__page-conatiner -site-text-size">
-      {userDetails.selectedTodoListData ? <DataModal closeModal={() => closeDataModal()} /> : null }
+      {userDetails.selectedTodoListData ? <DataModal /> : null }
       {getAppSidebarJSX()}
       <div className="main-body">
         {getAppHeaderJSX()}

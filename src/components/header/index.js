@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './index.scss';
 
-class Header extends Component {
-    render() {
+const Header = (props) => {
         return (
             <header className="header__component-container -container">
                 <div className="header__site-branding -site-text-size">
                     <div>
-                    <span>{this.props.headerTitle}</span>
+                    <span>{props.headerTitle}</span>
                     </div>
                     <div>
                       
@@ -22,7 +21,6 @@ class Header extends Component {
                 </div>
             </header>
         );
-    }
 }
 
 export default Header;

@@ -54,7 +54,7 @@ const Table = (props) => {
                     <table>
                         <thead>
                             <tr>
-                                <th onClick={() => sortById()} style={{cursor:'pointer'}}>ToDo ID</th>
+                                <th onClick={() => sortById()} style={{cursor:'pointer'}}>ToDo ID&nbsp;<i className="fas fa-sort"></i></th>
                                 <th>Title</th>
                                 <th>Status</th>
                                 <th>Action</th>

@@ -37,7 +37,7 @@
           th{
             padding: 10px 10px;
             font-size: 11px;
-            color: $textGrey;
+            color: #000;
             text-align: center;
           }
         }
@@ -50,7 +50,7 @@
             .messenger-batch{
               background: #6455b2;
               padding: 3px 10px;
-              border-radius: 16px;
+              border-radius: 5px;
               color: #fff;
             }
             .icon{
@@ -72,6 +72,7 @@
       }
       button{
         cursor: pointer;
+        outline: none;
       }
     }
     .search-container{
