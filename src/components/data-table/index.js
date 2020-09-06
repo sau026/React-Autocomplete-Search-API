@@ -66,7 +66,7 @@ const Table = (props) => {
                                     <tr key={i}>
                                         <td>{element.id}</td>
                                         <td>{element.title}</td>
-                                        <td>{element.completed}</td>
+                                        <td>{element.completed ? 'Complete' : 'Incomplete'}</td>
                                         <td>
                                             <button className="messenger-batch"
                                                 onClick={() => selectModalData(element)}>
