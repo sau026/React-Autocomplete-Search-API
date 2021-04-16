@@ -1,13 +1,13 @@
-import React from 'react'
-import Sidebar from '../../components/sidebar-left'
-import Header from '../../components/header'
-import { useSelector } from 'react-redux'
-import DataModal from '../../components/data-modal'
-import Table from '../../components/data-table'
+import React, {useState, useEffect} from 'react';
+import Sidebar from '../../components/sidebar-left';
+import Header from '../../components/header';
+import Autocomplete from '../../components/autocomplete';
+import axios from 'axios';
 import './index.scss';
 
 const Dashboard = (props) => {
-  const userDetails = useSelector(state => state.todoDataReducer)
+
+  const [searchedResult, setSearchedResult] = useState(null);
 
   const getAppHeaderJSX = () => {
     return (
@@ -25,21 +25,29 @@ const Dashboard = (props) => {
     )
   }
 
-  const getTableJSX = () => {
-    return (
-      <>
-        <Table/>
-      </>
-    )
+  const searchTodoData = (e)=>{
+    if(!e){
+      return setSearchedResult('no data');
+    }
+      axios.get(`https://ntsb-server.herokuapp.com/api/accidents/countryList/${e}`, {
+      })
+      .then(function (response) {
+        setSearchedResult(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   return (
     <div className="dashboard__page-conatiner -site-text-size">
-      {userDetails.selectedTodoListData ? <DataModal /> : null }
       {getAppSidebarJSX()}
       <div className="main-body">
         {getAppHeaderJSX()}
-        {getTableJSX()}
+        <Autocomplete 
+        searchValueProps={(e)=>searchTodoData(e)} 
+        options={searchedResult}
+        ></Autocomplete>
       </div>
     </div>
   );
